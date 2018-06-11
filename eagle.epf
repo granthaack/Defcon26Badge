@@ -380,8 +380,9 @@ UsedLibraryUrn="urn:adsk.eagle:library:174"
 UsedLibraryUrn="urn:adsk.eagle:library:175"
 UsedLibraryUrn="urn:adsk.eagle:library:176"
 UsedLibraryUrn="urn:adsk.eagle:library:177"
-UsedLibrary="/home/granthaack/eagle/projects/LumiledBoards/lumiled_boards.lbr"
 UsedLibrary="/home/granthaack/eagle/grant-eagle-lbr/SparkFun-Batteries.lbr"
+UsedLibrary="/home/granthaack/eagle/projects/LumiledBoards/lumiled_boards.lbr"
+UsedLibrary="/home/granthaack/eagle/grant-eagle-lbr/SparkFun-Eagle-Libraries-master/SparkFun-Aesthetics.lbr"
 
 [Win_1]
 Type="Control Panel"
