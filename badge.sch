@@ -1686,12 +1686,6 @@ TS-003</description>
 <text x="-1.524" y="1.016" size="1.27" layer="96">&gt;VALUE</text>
 <pin name="3.3V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
-<symbol name="VIN">
-<text x="-1.524" y="1.016" size="1.27" layer="96">&gt;VALUE</text>
-<pin name="VIN" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-<wire x1="-1.27" y1="-1.27" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
-</symbol>
 <symbol name="MOSFET-N">
 <wire x1="0.762" y1="0.762" x2="0.762" y2="0" width="0.254" layer="94"/>
 <wire x1="0.762" y1="0" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
@@ -2212,19 +2206,6 @@ Vishay IHLP
 <description>&lt;b&gt;3.3V Supply&lt;/b&gt;</description>
 <gates>
 <gate name="G$1" symbol="3.3V" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="VIN">
-<description>VIN Supply Symbol</description>
-<gates>
-<gate name="G$1" symbol="VIN" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -27530,8 +27511,8 @@ This is the "KIT" version, which has limited top masking for improved ease of as
 <part name="C8" library="adafruit" deviceset="C-US" device="C0805" value="10uf"/>
 <part name="BT1" library="SparkFun-Batteries" deviceset="BATTERY" device="-18650"/>
 <part name="IC3" library="atmel" library_urn="urn:adsk.eagle:library:105" deviceset="MEGA8" device="-AI" package3d_urn="urn:adsk.eagle:package:4313/1"/>
-<part name="C3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="22pF"/>
-<part name="C5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="22pF"/>
+<part name="C3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="22pF"/>
+<part name="C5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="22pF"/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -27597,25 +27578,23 @@ This is the "KIT" version, which has limited top masking for improved ease of as
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$9" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$10" library="microbuilder" deviceset="3.3V" device=""/>
-<part name="C59" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="0.1uF"/>
+<part name="C59" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="0.1uF"/>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$12" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="C60" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="10µF"/>
 <part name="U$13" library="microbuilder" deviceset="GND" device=""/>
-<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
+<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
 <part name="U$16" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="U$15" library="microbuilder" deviceset="3.3V" device=""/>
-<part name="U$17" library="microbuilder" deviceset="VIN" device=""/>
-<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
-<part name="R11" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
-<part name="R12" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
-<part name="R15" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
+<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
+<part name="R11" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
+<part name="R12" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
+<part name="R15" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
 <part name="Q1" library="microbuilder" deviceset="MOSFET-N" device="WIDE" value="BSS138"/>
 <part name="Q2" library="microbuilder" deviceset="MOSFET-N" device="WIDE" value="BSS138"/>
-<part name="R18" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="10K"/>
+<part name="R18" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="10K"/>
 <part name="U$18" library="microbuilder" deviceset="GND" device=""/>
 <part name="U4" library="microbuilder" deviceset="VREG_SOT23-5" device="" value="MIC5225-3.3"/>
-<part name="U$25" library="microbuilder" deviceset="VIN" device=""/>
 <part name="U$26" library="microbuilder" deviceset="GND" device=""/>
 <part name="C61" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="10µF"/>
 <part name="U$28" library="microbuilder" deviceset="3.3V" device=""/>
@@ -27645,18 +27624,18 @@ This is the "KIT" version, which has limited top masking for improved ease of as
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R24" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C63" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
-<part name="R25" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C64" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
-<part name="R26" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C65" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
-<part name="R27" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C66" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
-<part name="R28" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C67" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
-<part name="R29" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="M0805" package3d_urn="urn:adsk.eagle:package:26079/1" value="1k"/>
-<part name="C68" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:26137/1" value="100nF"/>
+<part name="R24" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C63" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
+<part name="R25" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C64" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
+<part name="R26" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C65" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
+<part name="R27" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C66" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
+<part name="R28" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C67" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
+<part name="R29" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="C68" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-US" device="C0603" package3d_urn="urn:adsk.eagle:package:26138/1" value="100nF"/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -27666,6 +27645,8 @@ This is the "KIT" version, which has limited top masking for improved ease of as
 <part name="GND28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND29" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X4" device="" package3d_urn="urn:adsk.eagle:package:22461/2" value="TCVR_HEADER"/>
+<part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -27910,7 +27891,6 @@ w/2A current</text>
 <instance part="R9" gate="G$1" x="-307.34" y="-43.18" rot="R180"/>
 <instance part="U$16" gate="G$1" x="-302.26" y="-38.1"/>
 <instance part="U$15" gate="G$1" x="-416.56" y="12.7"/>
-<instance part="U$17" gate="G$1" x="-378.46" y="12.7"/>
 <instance part="R10" gate="G$1" x="-416.56" y="0" rot="R90"/>
 <instance part="R11" gate="G$1" x="-408.94" y="0" rot="R90"/>
 <instance part="R12" gate="G$1" x="-386.08" y="0" rot="R90"/>
@@ -27920,7 +27900,6 @@ w/2A current</text>
 <instance part="R18" gate="G$1" x="-314.96" y="-48.26" rot="R90"/>
 <instance part="U$18" gate="G$1" x="-314.96" y="-58.42"/>
 <instance part="U4" gate="G$1" x="-358.14" y="-38.1"/>
-<instance part="U$25" gate="G$1" x="-370.84" y="-30.48"/>
 <instance part="U$26" gate="G$1" x="-370.84" y="-45.72"/>
 <instance part="C61" gate="G$1" x="-381" y="-38.1"/>
 <instance part="U$28" gate="G$1" x="-345.44" y="-30.48"/>
@@ -27971,6 +27950,8 @@ w/2A current</text>
 <instance part="GND28" gate="1" x="-236.22" y="-106.68"/>
 <instance part="GND29" gate="1" x="-190.5" y="-106.68"/>
 <instance part="JP3" gate="A" x="-312.42" y="-91.44"/>
+<instance part="P+4" gate="1" x="-378.46" y="12.7"/>
+<instance part="P+5" gate="1" x="-370.84" y="-30.48"/>
 </instances>
 <busses>
 </busses>
@@ -28074,6 +28055,18 @@ w/2A current</text>
 <wire x1="-124.46" y1="-144.78" x2="-124.46" y2="-152.4" width="0.1524" layer="91"/>
 <pinref part="CN4" gate="G$1" pin="GND"/>
 <pinref part="GND9" gate="1" pin="GND"/>
+<pinref part="CN4" gate="G$1" pin="ID"/>
+<wire x1="-132.08" y1="-142.24" x2="-124.46" y2="-142.24" width="0.1524" layer="91"/>
+<wire x1="-124.46" y1="-142.24" x2="-124.46" y2="-144.78" width="0.1524" layer="91"/>
+<junction x="-124.46" y="-144.78"/>
+<pinref part="CN4" gate="G$1" pin="D-"/>
+<wire x1="-132.08" y1="-139.7" x2="-124.46" y2="-139.7" width="0.1524" layer="91"/>
+<wire x1="-124.46" y1="-139.7" x2="-124.46" y2="-142.24" width="0.1524" layer="91"/>
+<junction x="-124.46" y="-142.24"/>
+<wire x1="-132.08" y1="-137.16" x2="-124.46" y2="-137.16" width="0.1524" layer="91"/>
+<wire x1="-124.46" y1="-137.16" x2="-124.46" y2="-139.7" width="0.1524" layer="91"/>
+<junction x="-124.46" y="-139.7"/>
+<pinref part="CN4" gate="G$1" pin="D+"/>
 </segment>
 <segment>
 <pinref part="BT1" gate="G$1" pin="-"/>
@@ -29031,6 +29024,28 @@ w/2A current</text>
 <junction x="25.4" y="25.4"/>
 <wire x1="25.4" y1="25.4" x2="53.34" y2="25.4" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U4" gate="G$1" pin="EN"/>
+<wire x1="-368.3" y1="-38.1" x2="-370.84" y2="-38.1" width="0.1524" layer="91"/>
+<wire x1="-370.84" y1="-38.1" x2="-370.84" y2="-35.56" width="0.1524" layer="91"/>
+<pinref part="U4" gate="G$1" pin="IN"/>
+<wire x1="-370.84" y1="-35.56" x2="-370.84" y2="-33.02" width="0.1524" layer="91"/>
+<wire x1="-368.3" y1="-35.56" x2="-370.84" y2="-35.56" width="0.1524" layer="91"/>
+<junction x="-370.84" y="-35.56"/>
+<pinref part="C61" gate="G$1" pin="1"/>
+<wire x1="-370.84" y1="-35.56" x2="-381" y2="-35.56" width="0.1524" layer="91"/>
+<pinref part="P+5" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<wire x1="-386.08" y1="5.08" x2="-386.08" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="-386.08" y1="7.62" x2="-378.46" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="-378.46" y1="7.62" x2="-378.46" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="-378.46" y1="5.08" x2="-378.46" y2="7.62" width="0.1524" layer="91"/>
+<junction x="-378.46" y="7.62"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<pinref part="R15" gate="G$1" pin="2"/>
+<pinref part="P+4" gate="1" pin="+5V"/>
+</segment>
 </net>
 <net name="N$7" class="0">
 <segment>
@@ -29309,30 +29324,6 @@ w/2A current</text>
 <wire x1="-314.96" y1="-93.98" x2="-325.12" y2="-93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VIN" class="0">
-<segment>
-<wire x1="-386.08" y1="5.08" x2="-386.08" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="-386.08" y1="7.62" x2="-378.46" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="-378.46" y1="7.62" x2="-378.46" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="-378.46" y1="5.08" x2="-378.46" y2="7.62" width="0.1524" layer="91"/>
-<junction x="-378.46" y="7.62"/>
-<pinref part="U$17" gate="G$1" pin="VIN"/>
-<pinref part="R12" gate="G$1" pin="2"/>
-<pinref part="R15" gate="G$1" pin="2"/>
-</segment>
-<segment>
-<pinref part="U4" gate="G$1" pin="EN"/>
-<pinref part="U$25" gate="G$1" pin="VIN"/>
-<wire x1="-368.3" y1="-38.1" x2="-370.84" y2="-38.1" width="0.1524" layer="91"/>
-<wire x1="-370.84" y1="-38.1" x2="-370.84" y2="-35.56" width="0.1524" layer="91"/>
-<pinref part="U4" gate="G$1" pin="IN"/>
-<wire x1="-370.84" y1="-35.56" x2="-370.84" y2="-33.02" width="0.1524" layer="91"/>
-<wire x1="-368.3" y1="-35.56" x2="-370.84" y2="-35.56" width="0.1524" layer="91"/>
-<junction x="-370.84" y="-35.56"/>
-<pinref part="C61" gate="G$1" pin="1"/>
-<wire x1="-370.84" y1="-35.56" x2="-381" y2="-35.56" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="SDA_3.3V" class="0">
 <segment>
 <wire x1="-403.86" y1="-7.62" x2="-416.56" y2="-7.62" width="0.1524" layer="91"/>
@@ -29412,18 +29403,16 @@ w/2A current</text>
 <pinref part="R9" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="CE\" class="0">
-<segment>
-<wire x1="-307.34" y1="-91.44" x2="-299.72" y2="-91.44" width="0.1524" layer="91"/>
-<label x="-299.72" y="-91.44" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="6"/>
-</segment>
-</net>
 <net name="CSN" class="0">
 <segment>
 <label x="-325.12" y="-91.44" size="1.778" layer="95" rot="R180"/>
 <pinref part="JP3" gate="A" pin="5"/>
 <wire x1="-314.96" y1="-91.44" x2="-325.12" y2="-91.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC3" gate="G$1" pin="PB0(ICP)"/>
+<wire x1="-193.04" y1="-22.86" x2="-187.96" y2="-22.86" width="0.1524" layer="91"/>
+<label x="-187.96" y="-22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RX" class="0">
@@ -29455,13 +29444,6 @@ w/2A current</text>
 <pinref part="IC3" gate="G$1" pin="PD6(AIN0)"/>
 <wire x1="-193.04" y1="-15.24" x2="-187.96" y2="-15.24" width="0.1524" layer="91"/>
 <pinref part="R19" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="PIEZO" class="0">
-<segment>
-<pinref part="IC3" gate="G$1" pin="PB1(OC1A)"/>
-<wire x1="-193.04" y1="-25.4" x2="-187.96" y2="-25.4" width="0.1524" layer="91"/>
-<label x="-187.96" y="-25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SW1" class="0">
@@ -30019,6 +30001,18 @@ w/2A current</text>
 <pinref part="LED49" gate="G$1" pin="DO"/>
 <pinref part="LED50" gate="G$1" pin="DI"/>
 <wire x1="292.1" y1="-104.14" x2="299.72" y2="-104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="CE" class="0">
+<segment>
+<pinref part="IC3" gate="G$1" pin="PD7(AIN1)"/>
+<wire x1="-193.04" y1="-17.78" x2="-187.96" y2="-17.78" width="0.1524" layer="91"/>
+<label x="-190.5" y="-20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="-307.34" y1="-91.44" x2="-299.72" y2="-91.44" width="0.1524" layer="91"/>
+<label x="-299.72" y="-91.44" size="1.778" layer="95"/>
+<pinref part="JP3" gate="A" pin="6"/>
 </segment>
 </net>
 </nets>
