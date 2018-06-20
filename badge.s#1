@@ -29403,13 +29403,6 @@ w/2A current</text>
 <pinref part="R9" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="CE\" class="0">
-<segment>
-<wire x1="-307.34" y1="-91.44" x2="-299.72" y2="-91.44" width="0.1524" layer="91"/>
-<label x="-299.72" y="-91.44" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="6"/>
-</segment>
-</net>
 <net name="CSN" class="0">
 <segment>
 <label x="-325.12" y="-91.44" size="1.778" layer="95" rot="R180"/>
@@ -30015,6 +30008,11 @@ w/2A current</text>
 <pinref part="IC3" gate="G$1" pin="PD7(AIN1)"/>
 <wire x1="-193.04" y1="-17.78" x2="-187.96" y2="-17.78" width="0.1524" layer="91"/>
 <label x="-190.5" y="-20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="-307.34" y1="-91.44" x2="-299.72" y2="-91.44" width="0.1524" layer="91"/>
+<label x="-299.72" y="-91.44" size="1.778" layer="95"/>
+<pinref part="JP3" gate="A" pin="6"/>
 </segment>
 </net>
 </nets>
