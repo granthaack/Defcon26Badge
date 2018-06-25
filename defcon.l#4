@@ -207,25 +207,6 @@
 <wire x1="36.72" y1="9.89" x2="-36.82" y2="9.89" width="0.127" layer="21"/>
 <wire x1="-36.82" y1="9.89" x2="-36.82" y2="-9.97" width="0.127" layer="21"/>
 </package>
-<package name="1043_BATTERY_CLIP">
-<pad name="P$1" x="-36.11" y="0" drill="1.33" shape="octagon"/>
-<pad name="P$2" x="36.11" y="0" drill="1.33" shape="octagon"/>
-<hole x="-27.6" y="-8" drill="3.55"/>
-<hole x="27.6" y="8" drill="3.55"/>
-<hole x="36.11" y="-8" drill="2.39"/>
-<wire x1="-39" y1="-11" x2="39" y2="-11" width="0.127" layer="21"/>
-<wire x1="39" y1="-11" x2="39" y2="11" width="0.127" layer="21"/>
-<wire x1="39" y1="11" x2="-39" y2="11" width="0.127" layer="21"/>
-<wire x1="-39" y1="11" x2="-39" y2="-11" width="0.127" layer="21"/>
-</package>
-<package name="54_BATTERY_CLIP">
-<pad name="P$1" x="-24" y="2.54" drill="1.83" shape="octagon"/>
-<pad name="P$2" x="-24" y="-2.54" drill="1.83" shape="octagon"/>
-<pad name="P$3" x="-31.62" y="0" drill="1.83" shape="octagon"/>
-<pad name="P$4" x="24" y="2.54" drill="1.83" shape="octagon"/>
-<pad name="P$5" x="24" y="-2.54" drill="1.83" shape="octagon"/>
-<pad name="P$6" x="31.62" y="0" drill="1.83" shape="octagon"/>
-</package>
 </packages>
 <symbols>
 <symbol name="WS2812BLED">
@@ -360,38 +341,6 @@
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
 <connect gate="G$1" pin="P$2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="1043_BATTERY_CLIP">
-<gates>
-<gate name="G$1" symbol="1042_BATTERY_CLIP" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="1043_BATTERY_CLIP">
-<connects>
-<connect gate="G$1" pin="P$1" pad="P$1"/>
-<connect gate="G$1" pin="P$2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="54_BATTERY_CLIP">
-<gates>
-<gate name="G$1" symbol="1042_BATTERY_CLIP" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="54_BATTERY_CLIP">
-<connects>
-<connect gate="G$1" pin="P$1" pad="P$1 P$2 P$3"/>
-<connect gate="G$1" pin="P$2" pad="P$4 P$5 P$6"/>
 </connects>
 <technologies>
 <technology name=""/>
