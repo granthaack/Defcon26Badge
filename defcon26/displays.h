@@ -31,8 +31,8 @@ void sampleInit(struct Pixel newGrid[10][20]) {
 }
 
 void sampleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
-  for (int i = 0; i < 5; i++) {
-    for (int j = 0; j < 10; j++) {
+  for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 20; j++) {
       newGrid[i][j].r = newGrid[i][j].g = newGrid[i][j].b = 0;
       unsigned long type = random(0, 3);
       switch (type) {
@@ -52,17 +52,17 @@ void sampleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
 
 void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
   
-  uint8_t stateTable[] = {0,1,1,2,9,0,3,3,9,0,4,4,9,0,1,1,9,0,1,1,0,9,0,5,6,0,9,7,3,10,9,2,3,3,8,9,9,9,6,6,6,9,9,9};
-  
+  uint8_t stateTable[] = {0,1,1,2,9,0,3,3,9,0,4,4,9,9,0,1,1,9,0,1,1,0,9,0,5,6,0,9,7,3,10,9,2,3,3,8,9,9,9,6,6,6,9,9,9};
+
   // Generator
-  newGrid[5][19].g = ((letterSlices[state] << 0) & 1) * 150;
-  newGrid[6][19].g = ((letterSlices[state] << 1) & 1) * 150;
-  newGrid[7][19].g = ((letterSlices[state] << 2) & 1) * 150;
-  newGrid[8][19].g = ((letterSlices[state] << 3) & 1) * 150;
-  newGrid[9][19].g = ((letterSlices[state] << 4) & 1) * 150;
+  newGrid[5][19].g = (((letterSlices[stateTable[state]] >> 4) & 0b1) * 150);
+  newGrid[6][19].g = ((letterSlices[stateTable[state]] >> 3) & 0b1) * 150;
+  newGrid[7][19].g = ((letterSlices[stateTable[state]] >> 2) & 0b1) * 150;
+  newGrid[8][19].g = ((letterSlices[stateTable[state]] >> 1) & 0b1) * 150;
+  newGrid[9][19].g = ((letterSlices[stateTable[state]] >> 0) & 0b1) * 150;
 
   // Fourth and third screens
-  for(uint8_t i = 18; i >= 0; i--) {
+  for(int8_t i = 18; i >= 0; i--) {
     newGrid[5][i] = oldGrid[5][i+1];
     newGrid[6][i] = oldGrid[6][i+1];
     newGrid[7][i] = oldGrid[7][i+1];
@@ -78,12 +78,12 @@ void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
   newGrid[4][19] = oldGrid[9][0];
 
   // First and second screen
-  for(uint8_t i = 18; i >= 0; i--) {
-    newGrid[5][i] = oldGrid[5][i+1];
-    newGrid[6][i] = oldGrid[6][i+1];
-    newGrid[7][i] = oldGrid[7][i+1];
-    newGrid[8][i] = oldGrid[8][i+1];
-    newGrid[9][i] = oldGrid[9][i+1];
+  for(int8_t i = 18; i >= 0; i--) {
+    newGrid[0][i] = oldGrid[0][i+1];
+    newGrid[1][i] = oldGrid[1][i+1];
+    newGrid[2][i] = oldGrid[2][i+1];
+    newGrid[3][i] = oldGrid[3][i+1];
+    newGrid[4][i] = oldGrid[4][i+1];
   }
 
   state++;
