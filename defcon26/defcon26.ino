@@ -13,8 +13,8 @@ byte id;
 bool isMaster;
 
 // For now just place whatever test pattern you want to use here. 
-void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[1].updateFunc;
-void (*mainInit) (struct Pixel newGrid[10][20]) = displays[1].initFunc;
+void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[2].updateFunc;
+void (*mainInit) (struct Pixel newGrid[10][20]) = displays[2].initFunc;
 
 void setup() {
   randomSeed(1);
@@ -47,8 +47,8 @@ void loop() {
     mainUpdate(oldGrid, newGrid);
     memcpy(oldGrid,newGrid,sizeof(newGrid));
     uint8_t counter = 0;
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 10; j++) {
+    for (uint8_t i = 0; i < 5; i++) {
+      for (uint8_t j = 0; j < 10; j++) {
         Pixel p = newGrid[i][j];
         pixels.setPixelColor(counter++, p.r, p.g, p.b);
       }
