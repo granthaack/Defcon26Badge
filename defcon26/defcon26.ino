@@ -46,10 +46,11 @@ void loop() {
   if (needsUpdate) {
     mainUpdate(oldGrid, newGrid);
     memcpy(oldGrid,newGrid,sizeof(newGrid));
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 10; j++) {
+    uint8_t counter = 0;
+    for (uint8_t i = 0; i < 5; i++) {
+      for (uint8_t j = 0; j < 10; j++) {
         Pixel p = newGrid[i][j];
-        pixels.setPixelColor(j + i * 10, p.r, p.g, p.b);
+        pixels.setPixelColor(counter++, p.r, p.g, p.b);
       }
     }
     needsUpdate = false;
