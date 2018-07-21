@@ -1,53 +1,20 @@
 #include <Adafruit_NeoPixel.h> 
 #include <RF24.h>
+#include "displays.h"
 
 Adafruit_NeoPixel pixels;
 
-uint8_t DRAW_OFFSET = 15;
+uint8_t DRAW_OFFSET = 150;
 
 unsigned long lastDrawTime = 0;
 bool needsUpdate = true;
 
-struct Pixel {
-  uint8_t r;
-  uint8_t g;
-  uint8_t b;
-};
-
-struct Pixel oldGrid[10][20];
-struct Pixel newGrid[10][20];
-
 byte id;
 bool isMaster;
 
-void clearInit(struct Pixel newGrid[10][20]) {
-  memset(newGrid,0,sizeof(newGrid));
-}
-
-void updateGrid(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
-  for (int i = 0; i < 5; i++) {
-    for (int j = 0; j < 10; j++) {
-      newGrid[i][j].r = newGrid[i][j].g = newGrid[i][j].b = 0;
-      unsigned long type = random(0, 3);
-      switch (type) {
-      case 0:
-        newGrid[i][j].r = 255;
-        break;
-      case 1:
-        newGrid[i][j].g = 255;
-        break;
-      case 2:
-        newGrid[i][j].b = 255;
-        break;
-      }
-    }
-  }
-}
-
 // For now just place whatever test pattern you want to use here. 
-// Eventually there will be an array of function pointers which we will use to change these via buttons. 
-void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = &updateGrid;
-void (*mainInit) (struct Pixel newGrid[10][20]) = &clearInit;
+void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[0].updateFunc;
+void (*mainInit) (struct Pixel newGrid[10][20]) = displays[0].initFunc;
 
 void setup() {
   randomSeed(1);
@@ -59,7 +26,7 @@ void setup() {
 
   //Set the brightness to 16% (1/6th total brightness)
   //Param 1: Brightness from 0 - 255
-  pixels.setBrightness(20);
+  pixels.setBrightness(10);
 
   // Turn on the pixels, clearing whatever data was on them.
   pixels.show();
