@@ -11,8 +11,7 @@
 #ifndef ACCEL_H_
 #define ACCEL_H_
 
-#include <Arduino.h>
-#include <Wire.h>
+#include "Arduino.h"
 
 //The accelerometer is hard wired with device address 0x19
 #define ACCL_ADDR 0x19
@@ -24,17 +23,18 @@
 #define CTRL_REG4     0x23
 #define TEMP_CFG_REG  0x1F
 #define OUT_X_L       0x28
+#define OUT_X_H       0x29
+#define OUT_Y_L       0x2A
+#define OUT_Y_H       0x2B
+#define OUT_Z_L       0x2C
+#define OUT_Z_H       0x2D
 
 //The data structure that will hold the accelerometer data
 struct Accel{
-  uint16_t x;
-  uint16_t y;
-  uint16_t z;
-}
-
-//Declare an I2C interface
-TwoWire *i2c;
-
+  int16_t x;
+  int16_t y;
+  int16_t z;
+};
 //Initialize the accelerometer. Returns 1 on success and 0 on failure
 uint8_t init_accel();
 
