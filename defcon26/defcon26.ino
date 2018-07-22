@@ -1,12 +1,7 @@
-#include <Adafruit_NeoPixel.h> 
+#include <Simpix.h>
+#include <Accel.h>
 #include <RF24.h>
 #include "displays.h"
-#include <Adafruit_LIS3DH.h>
-#include <Adafruit_Sensor.h>
-#include <Wire.h>
-
-Adafruit_NeoPixel pixels;
-Adafruit_LIS3DH lis = Adafruit_LIS3DH();
 
 uint8_t DRAW_OFFSET = 150;
 
@@ -20,52 +15,46 @@ bool isMaster;
 void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[1].updateFunc;
 void (*mainInit) (struct Pixel newGrid[10][20]) = displays[1].initFunc;
 
+Accel accel;
+
 void setup() {
   Serial.begin(9600);
+  init_accel();
+  
   randomSeed(1);
 
   //Set the pin as an input
   pinMode(A0, INPUT);
   //Turn on the internal pullup
   digitalWrite(A0, HIGH);
-
-  //Turn on the accelerometer
-  if (! lis.begin(0x19)) {   // change this to 0x19 for alternative i2c address
-    Serial.println("Accelerometer couldnt start");
-  }
-  lis.setRange(LIS3DH_RANGE_4_G);   // 2, 4, 8 or 16 G!
   
   lastDrawTime = millis();
-  pixels = Adafruit_NeoPixel(50, 6, NEO_GRB);
+  led_setup();
 
-  //Initialize the pixels
-  pixels.begin();
-
-  //Set the brightness to 16% (1/6th total brightness)
-  //Param 1: Brightness from 0 - 255
-  pixels.setBrightness(10);
 
   mainInit(newGrid);
   memcpy(oldGrid,newGrid,sizeof(newGrid));
-
-  // Turn on the pixels, clearing whatever data was on them.
-  pixels.show();
 }
 
 void loop() {
-  //Get accelerometer data
-  lis.read();
-
   // If we haven't calculated our new grid for this draw, do it.
+  
   if (needsUpdate) {
     mainUpdate(oldGrid, newGrid);
     memcpy(oldGrid,newGrid,sizeof(newGrid));
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 10; j++) {
+    cli();
+    for (uint8_t i = 0; i < 5; i++) {
+      for (uint8_t j = 0; j < 10; j++) {
         Pixel p = newGrid[i][j];
-        pixels.setPixelColor(j + i * 10, p.r, p.g, p.b);
+        send_pixel(p.r, p.g, p.b);
       }
     }
+    sei();
+    show_pixels();
+    read_accel(&accel);
+    Serial.println(accel.x);
+    Serial.println(accel.y);
+    Serial.println(accel.z);
     needsUpdate = false;
   }
 
@@ -73,7 +62,6 @@ void loop() {
   unsigned long curTime = millis();
   if (curTime > lastDrawTime + DRAW_OFFSET) {
     lastDrawTime = curTime;
-    pixels.show();
     needsUpdate = true;
   }
 }
