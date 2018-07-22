@@ -12,8 +12,8 @@ byte id;
 bool isMaster;
 
 // For now just place whatever test pattern you want to use here. 
-void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[1].updateFunc;
-void (*mainInit) (struct Pixel newGrid[10][20]) = displays[1].initFunc;
+void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[2].updateFunc;
+void (*mainInit) (struct Pixel newGrid[10][20]) = displays[2].initFunc;
 
 Accel accel;
 
