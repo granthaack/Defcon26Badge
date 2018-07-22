@@ -1,9 +1,9 @@
 /*
   Super Simple Neopixel Driver based on BigJosh's code
   #defines are specifically for our badge
-  More info at http://wp.josh.com/2014/05/11/ws2812-neopixels-made-easy/
+  More info at https://wp.josh.com/2014/05/13/ws2812-neopixels-are-not-so-finicky-once-you-get-to-know-them/
   Modified by Grant Haack, July 22nd 2018
-  Released under GPL v.3
+  Released under GPL V3
     Join us now and share the Software
     You'll be free, Hackers, you'll be free
 */

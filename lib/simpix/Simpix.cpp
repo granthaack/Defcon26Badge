@@ -40,10 +40,10 @@ inline void send_bit(bool bit_val) {
     }
 }
 
-inline void send_byte(uint8_t s_bit) {
+inline void send_byte(uint8_t s_byte) {
     for(uint8_t bit_num = 0; bit_num < 8; bit_num++) {
-      send_bit(bitRead(s_bit, 7));
-      s_bit <<= 1;
+      send_bit(bitRead(s_byte, 7));
+      s_byte <<= 1;
     }
 }
 
