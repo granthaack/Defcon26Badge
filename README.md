@@ -6,7 +6,7 @@ Peripherals:
 
 -5x10 RGB Neopixel array
 
--LISDH Triple Axis Accelerometer
+-LIS3DH Triple Axis Accelerometer
 
 -NRF24L01 2.4GHz wireless transciever
 
