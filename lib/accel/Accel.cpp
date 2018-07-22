@@ -88,9 +88,9 @@ void read_accel(struct Accel* accel){
   accel->x = read_reg_byte(OUT_X_L);
   accel->x |= ((read_reg_byte(OUT_X_H)) << 8);
 
-  accel->x = read_reg_byte(OUT_Y_L);
-  accel->x |= ((read_reg_byte(OUT_Y_H)) << 8);
+  accel->y = read_reg_byte(OUT_Y_L);
+  accel->y |= ((read_reg_byte(OUT_Y_H)) << 8);
 
-  accel->x = read_reg_byte(OUT_Z_L);
-  accel->x |= ((read_reg_byte(OUT_Z_H)) << 8);
+  accel->z = read_reg_byte(OUT_Z_L);
+  accel->z |= ((read_reg_byte(OUT_Z_H)) << 8);
 }
