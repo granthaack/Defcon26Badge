@@ -1,10 +1,10 @@
 
 /*
-  Accel.cpp - A lightweight library for communicating with the LIS3DH
-  acclerometer over I2C.
+  Accel - A lightweight library for communicating with the LIS3DH
+  acclerometer over with SoftI2cMaster for maximum RAM savings.
   Created by Grant Haack, July 21st 2018
-  Released under GPL v.3
-    Join us know and share the Software
+  Released under GPL V3
+    Join us now and share the Software
     You'll be free, Hackers, you'll be free
 */
 
