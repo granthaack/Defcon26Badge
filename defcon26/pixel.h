@@ -1,3 +1,5 @@
+#ifndef PIXEL_H_   /* Include guard */
+#define PIXEL_H_
 #include <Arduino.h>
 
 const uint8_t letterSlices[] =
@@ -23,3 +25,4 @@ struct Pixel {
 
 struct Pixel oldGrid[10][20];
 struct Pixel newGrid[10][20];
+#endif // DISPLAYS_H_

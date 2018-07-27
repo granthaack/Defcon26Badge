@@ -1,6 +1,5 @@
 #include <Adafruit_NeoPixel.h> 
-#include <RF24.h>
-#include "displays.h"
+#include "menu.h"
 
 Adafruit_NeoPixel pixels;
 
@@ -9,20 +8,19 @@ uint8_t DRAW_OFFSET = 150;
 unsigned long lastDrawTime = 0;
 bool needsUpdate = true;
 
-byte id;
-bool isMaster;
-
-// For now just place whatever test pattern you want to use here. 
-void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) = displays[2].updateFunc;
-void (*mainInit) (struct Pixel newGrid[10][20]) = displays[2].initFunc;
-
 void setup() {
   randomSeed(1);
 
   //Set the pin as an input
   pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
   //Turn on the internal pullup
   digitalWrite(A0, HIGH);
+  digitalWrite(A1, HIGH);
+  digitalWrite(A2, HIGH);
+  digitalWrite(A3, HIGH);
   
   lastDrawTime = millis();
   pixels = Adafruit_NeoPixel(50, 6, NEO_GRB);
@@ -34,6 +32,9 @@ void setup() {
   //Param 1: Brightness from 0 - 255
   pixels.setBrightness(10);
 
+  mainInit = &menuInit;
+  mainUpdate = &menuUpdate;
+
   mainInit(newGrid);
   memcpy(oldGrid,newGrid,sizeof(newGrid));
 
@@ -42,6 +43,12 @@ void setup() {
 }
 
 void loop() {
+  if(!isMenu && !digitalRead(A0) && !digitalRead(A3)) {
+    isMenu = true;
+    menuInit(newGrid);
+    mainUpdate = &menuUpdate;
+  }
+
   // If we haven't calculated our new grid for this draw, do it.
   if (needsUpdate) {
     mainUpdate(oldGrid, newGrid);
@@ -54,6 +61,9 @@ void loop() {
       }
     }
     needsUpdate = false;
+    if(isMaster) {
+      sendGrid(newGrid); 
+    }
   }
 
   // Wait DRAW_OFFSET number of milliseconds between each draw, to prevent LED flicker.
