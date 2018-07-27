@@ -32,9 +32,6 @@ const struct Display displays[] =
   {&conwayUpdate,&conwayInit}
 };
 
-RF24 radio(7,8);
-uint8_t id;
-
 void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
 void (*mainInit) (struct Pixel newGrid[10][20]);
 
