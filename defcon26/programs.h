@@ -4,6 +4,7 @@
 #include "displays.h"
 
 extern unsigned int state;
+extern uint8_t radius:
 
 void clearGrid(struct Pixel grid[10][20]);
 
@@ -88,6 +89,8 @@ void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
   }
 }
 
+
+//Circle functions
 bool circleCheckOn(uint8_t pixel_x, uint8_t pixel_y, uint8_t c_center_x, uint8_t c_center_y, uint8_t radius){
   //Vector math: B - A = C
   uint8_t vector_x = abs(c_center_x - pixel_x);
@@ -101,7 +104,15 @@ bool circleCheckOn(uint8_t pixel_x, uint8_t pixel_y, uint8_t c_center_x, uint8_t
   return 0;
 }
 
+void updateRadius(int16_t accel_z, uint8_t* radius){
+  radius* = accel_z/3;
+}
 
+void updateColor(int16_t accel_y, Pixel* pix){
+  pix->r = abs(accel_y);
+  pix->g = abs(accel_y/2);
+  pix->b = abs(accel_y/4);
+}
 
 void conwayInit(struct Pixel newGrid[10][20]) {
   clearGrid(newGrid);

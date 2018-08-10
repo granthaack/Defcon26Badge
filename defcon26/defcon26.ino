@@ -1,16 +1,23 @@
-#include <Adafruit_NeoPixel.h>
+#include <Accel.h>
+
+#include <LineFollow.h>
+#include <Multiplexer.h>
+#include <ArduinoRobotMotorBoard.h>
+#include <EasyTransfer2.h>
+
+#include <Adafruit_NeoPixel.h> 
 #include "menu.h"
 
 Adafruit_NeoPixel pixels;
-Adafruit_LIS3DH lis = Adafruit_LIS3DH();
 
 uint8_t DRAW_OFFSET = 150;
 
 unsigned long lastDrawTime = 0;
 bool needsUpdate = true;
 
+Accel lis_accel;
+
 void setup() {
-  Serial.begin(9600);
   randomSeed(1);
 
   //Set the pin as an input
@@ -23,7 +30,7 @@ void setup() {
   digitalWrite(A1, HIGH);
   digitalWrite(A2, HIGH);
   digitalWrite(A3, HIGH);
-
+  
   lastDrawTime = millis();
   pixels = Adafruit_NeoPixel(50, 6, NEO_GRB);
 
@@ -34,6 +41,9 @@ void setup() {
   //Param 1: Brightness from 0 - 255
   pixels.setBrightness(10);
 
+  //Initialize the accelerometer
+  init_accel();
+        
   mainInit = &menuInit;
   mainUpdate = &menuUpdate;
 
@@ -64,7 +74,7 @@ void loop() {
     }
     needsUpdate = false;
     if(isMaster) {
-      sendGrid(newGrid);
+      sendGrid(newGrid); 
     }
   }
 
