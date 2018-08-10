@@ -1,7 +1,8 @@
-#include <Adafruit_NeoPixel.h> 
+#include <Adafruit_NeoPixel.h>
 #include "menu.h"
 
 Adafruit_NeoPixel pixels;
+Adafruit_LIS3DH lis = Adafruit_LIS3DH();
 
 uint8_t DRAW_OFFSET = 150;
 
@@ -9,6 +10,7 @@ unsigned long lastDrawTime = 0;
 bool needsUpdate = true;
 
 void setup() {
+  Serial.begin(9600);
   randomSeed(1);
 
   //Set the pin as an input
@@ -21,7 +23,7 @@ void setup() {
   digitalWrite(A1, HIGH);
   digitalWrite(A2, HIGH);
   digitalWrite(A3, HIGH);
-  
+
   lastDrawTime = millis();
   pixels = Adafruit_NeoPixel(50, 6, NEO_GRB);
 
@@ -62,7 +64,7 @@ void loop() {
     }
     needsUpdate = false;
     if(isMaster) {
-      sendGrid(newGrid); 
+      sendGrid(newGrid);
     }
   }
 

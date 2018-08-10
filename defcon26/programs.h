@@ -88,6 +88,21 @@ void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
   }
 }
 
+bool circleCheckOn(uint8_t pixel_x, uint8_t pixel_y, uint8_t c_center_x, uint8_t c_center_y, uint8_t radius){
+  //Vector math: B - A = C
+  uint8_t vector_x = abs(c_center_x - pixel_x);
+  uint8_t vector_y = abs(c_center_y - pixel_y);
+
+  uint8_t pixel_vector_len = sqrt(pow(vector_x, 2) + pow(vector_y, 2));
+  if pixel_vector_len <= radius
+  {
+    return 1;
+  }
+  return 0;
+}
+
+
+
 void conwayInit(struct Pixel newGrid[10][20]) {
   clearGrid(newGrid);
   newGrid[1][4].g = 255;
