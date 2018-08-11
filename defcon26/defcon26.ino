@@ -1,16 +1,10 @@
-#include <Accel.h>
-
-#include <LineFollow.h>
-#include <Multiplexer.h>
-#include <ArduinoRobotMotorBoard.h>
-#include <EasyTransfer2.h>
-
 #include <Adafruit_NeoPixel.h> 
 #include "menu.h"
+#include <Accel.h>
 
 Adafruit_NeoPixel pixels;
 
-uint8_t DRAW_OFFSET = 150;
+uint8_t DRAW_OFFSET = 10;
 
 unsigned long lastDrawTime = 0;
 bool needsUpdate = true;
@@ -52,6 +46,7 @@ void setup() {
 
   // Turn on the pixels, clearing whatever data was on them.
   pixels.show();
+  Serial.begin(115200);
 }
 
 void loop() {

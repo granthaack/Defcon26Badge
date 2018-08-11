@@ -8,7 +8,7 @@ void clearGrid(struct Pixel grid[10][20]);
 bool isMenu = false;
 bool isMaster = true;
 uint8_t program;
-uint8_t MAX_PROGRAM = 2;
+uint8_t MAX_PROGRAM = 3;
 
 RF24 radio(7,8);
 uint8_t id = 0;

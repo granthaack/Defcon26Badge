@@ -2,9 +2,10 @@
 #define PROGRAMS_H_
 #include "pixel.h"
 #include "displays.h"
+#include <Accel.h>
 
 extern unsigned int state;
-extern uint8_t radius:
+extern uint8_t radius;
 
 void clearGrid(struct Pixel grid[10][20]);
 
@@ -20,6 +21,9 @@ void slaveUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
 
 void menuInit(struct Pixel newGrid[10][20]);
 void menuUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
+
+void circleInit(struct Pixel newGrid[10][20]);
+void circleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
 
 void sampleInit(struct Pixel newGrid[10][20]) {
   state = 0;
@@ -47,7 +51,7 @@ void sampleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
 }
 
 void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
-  
+
   uint8_t stateTable[] = {0,1,1,2,9,0,3,3,9,0,4,4,9,9,0,1,1,9,0,1,1,0,9,0,5,6,0,9,7,3,10,9,2,3,3,8,9,9,9,6,6,6,9,9,9};
 
   // Generator
@@ -65,7 +69,7 @@ void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
     newGrid[8][i] = oldGrid[8][i+1];
     newGrid[9][i] = oldGrid[9][i+1];
   }
- 
+
   // Wrap-around to second screen
   newGrid[0][19] = oldGrid[5][0];
   newGrid[1][19] = oldGrid[6][0];
@@ -91,29 +95,54 @@ void scrollUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
 
 
 //Circle functions
-bool circleCheckOn(uint8_t pixel_x, uint8_t pixel_y, uint8_t c_center_x, uint8_t c_center_y, uint8_t radius){
-  //Vector math: B - A = C
-  uint8_t vector_x = abs(c_center_x - pixel_x);
-  uint8_t vector_y = abs(c_center_y - pixel_y);
+void circleInit(struct Pixel newGrid[10][20]){
+    clearGrid(newGrid);
+}
 
-  uint8_t pixel_vector_len = sqrt(pow(vector_x, 2) + pow(vector_y, 2));
-  if pixel_vector_len <= radius
-  {
-    return 1;
+uint8_t circleCheckOn(uint8_t pixel_x, uint8_t pixel_y, uint8_t c_center_x, uint8_t c_center_y, uint8_t radius){
+  //Vector math: B - A = C
+  uint8_t vector_x = abs(pixel_x - c_center_x);
+  uint8_t vector_y = abs(pixel_y - c_center_y);
+
+  float pixel_vector_len = sqrt(pow(vector_x, 2) + pow(vector_y, 2));
+  if (pixel_vector_len <= radius){
+    return 255/(pixel_vector_len + 1);
   }
   return 0;
 }
 
-void updateRadius(int16_t accel_z, uint8_t* radius){
-  radius* = accel_z/3;
+void circleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]){
+  Accel lis_accel;
+  read_accel(&lis_accel);
+  uint8_t coord_x = ((lis_accel.y)/6554) + 3;
+  uint8_t coord_y = ((lis_accel.x)/3278) + 4;
+
+  uint8_t color_table[] = {255, 0, 0,  128, 128, 0,  0, 255, 0,  0, 128, 128,  0, 0, 255, 128, 0, 128};
+  uint8_t color_pointer = 0;
+  
+  for(uint8_t pix_x = 0; pix_x < 5; pix_x++){
+    for(uint8_t pix_y = 0; pix_y < 10; pix_y++){
+      uint8_t pix_weight = circleCheckOn(pix_x, pix_y, coord_x, coord_y, abs(lis_accel.z/4000));
+      if(pix_weight){
+        newGrid[pix_x][pix_y].r = pix_weight;
+      }
+      else{
+        newGrid[pix_x][pix_y].r = 0;
+        newGrid[pix_x][pix_y].g = 0;
+        newGrid[pix_x][pix_y].b = 0;
+      }
+    }
+  }
+
+  if(color_pointer >= 14){
+    color_pointer = 0;
+  }
+  else{
+    color_pointer += 3;
+  }
 }
 
-void updateColor(int16_t accel_y, Pixel* pix){
-  pix->r = abs(accel_y);
-  pix->g = abs(accel_y/2);
-  pix->b = abs(accel_y/4);
-}
-
+//Conway's Game of Life
 void conwayInit(struct Pixel newGrid[10][20]) {
   clearGrid(newGrid);
   newGrid[1][4].g = 255;
@@ -134,7 +163,7 @@ void conwayUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
     }
   }
 
-  
+
 
   for (uint8_t i = 0; i < 10; i++) {
     for (uint8_t j = 0; j < 20; j++) {
@@ -154,7 +183,7 @@ void conwayUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]) {
       numNeighbors += oldGrid[i][jMinusOne].g == 255;
       numNeighbors += oldGrid[i][jPlusOne].g == 255;
 
-        
+
       if (!isAlive && numNeighbors == 3) newGrid[i][j].g = 255;
       else if (isAlive && numNeighbors <= 1) newGrid[i][j].g = 0;
       else if (isAlive && numNeighbors > 3) newGrid[i][j].g = 0;

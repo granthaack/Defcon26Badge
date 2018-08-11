@@ -18,6 +18,9 @@ void slaveUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
 void menuInit(struct Pixel newGrid[10][20]);
 void menuUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
 
+void circleInit(struct Pixel newGrid[10][20]);
+void circleUpdate(struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
+
 struct Display {
   void (*updateFunc) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
   void (*initFunc) (struct Pixel newGrid[10][20]);
@@ -29,7 +32,9 @@ const struct Display displays[] =
 {
   {&sampleUpdate,&sampleInit},
   {&scrollUpdate,&sampleInit},
-  {&conwayUpdate,&conwayInit}
+  {&conwayUpdate,&conwayInit},
+  {&circleUpdate,&circleInit}
+
 };
 
 void (*mainUpdate) (struct Pixel oldGrid[10][20], struct Pixel newGrid[10][20]);
