@@ -1,5 +1,10 @@
 # Defcon26Badge
 
+************************************************
+Read the wiki!
+https://github.com/granthaack/Defcon26Badge/wiki
+************************************************
+
 This is a custom badge for our friend group. At its core, it's an Atmel ATMEGA328P running the arduino bootloader. 
 
 Peripherals:
